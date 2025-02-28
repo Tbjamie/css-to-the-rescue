@@ -23,7 +23,7 @@
 
 ### Maandag 24 Feb
 
-We begonnen met een css to the rescue introductie opdracht. Hiervoor werden er verschillende groepen gemaakt binnen de klas en elk van deze groepen had een onderwerp waarvoor testjes gemaakt moesten worden. Het onderwerp die mijn groep had was: [ONDERWERP HIER]. IK had hiervoor een test gemaakt met blend mode en de nieuwe kleuren die beschikbaar zijn in css.
+We begonnen met een css to the rescue introductie opdracht. Hiervoor werden er verschillende groepen gemaakt binnen de klas en elk van deze groepen had een thema waarvoor testjes gemaakt moesten worden. Het thema die mijn groep had was: Makeup. IK had hiervoor een test gemaakt met blend mode en de nieuwe kleuren die beschikbaar zijn in css.
 
 Hieruit heb ik een aantal nieuwe dingen geleerd, vooral over kleuren waar ik van Sanne een uitgebreide uitleg van heb gekregen. Als we bijvoorbeeld kijken naar oklch, zou deze in theorie een betere kleur op moeten leveren dan bij gebruik van hsl. Het nadeel is alleen dat het kleurbereik van oklch groter is dan die van de monitoren die er bestaan wat er voor zorgt dat een lijn wordt getrokken van het punt in oklch naar het punt op de huidige ondersteunde kleuren, wat ervoor kan zorgen dat een kleur er misschien anders uitziet dan bedoeld of zelfs dat de kleur per monitor verschilt. Bij het gebruik van gradients is oklch wel een stuk mooier dan hsl aangezien de intensiteit tussen kleuren gelijk wordt gemaakt, wat zorgt voor een mooie overloop.
 
