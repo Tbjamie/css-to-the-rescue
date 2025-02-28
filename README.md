@@ -1,10 +1,23 @@
 # CSS To The Rescue
 
-CSS To The Rescue
-
 ## Inhoudsopgave
 
-- [Week 1](Week 1)
+- [Week 1](#week-1)
+  - [Maandag 24 Feb](#maandag-24-feb)
+  - [Dinsdag 25 Feb](#dinsdag-25-feb)
+  - [Vrijdag 28 Feb](#vrijdag-28-feb)
+- [Week 2](#week-2)
+  - [Maandag 3 Mar](#maandag-3-mar)
+  - [Dinsdag 4 Mar](#dinsdag-4-mar)
+  - [Vrijdag 7 Mar](#vrijdag-7-mar)
+- [Week 3](#week-3)
+  - [Maandag 10 Mar](#maandag-10-mar)
+  - [Dinsdag 11 Mar](#dinsdag-11-mar)
+  - [Vrijdag 14 Mar](#vrijdag-14-mar)
+- [Week 4](#week-4)
+  - [Maandag 17 Mar](#maandag-17-mar)
+  - [Dinsdag 18 Mar](#dinsdag-18-mar)
+  - [Vrijdag 21 Mar](#vrijdag-21-mar)
 
 ## Week 1
 
