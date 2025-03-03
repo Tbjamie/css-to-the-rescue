@@ -43,6 +43,10 @@ Tijdens deze eerste feedback ronde zaten we in een groepje met Sanne en deelde w
 
 ### Maandag 3 Mar
 
+Ik begon deze week met het uitbreiden van mijn concept. Ik heb als idee een movie picker erbij. Deze bestaat uit 3 films en van de geselecteerde film is er een timeline te zien. Ik heb vandaag de movie picker ook kunnen laten werken en ga morgen verder met het maken van de timelines. Ook heb ik een workshop gevolgd van Roel Nieskens over glitch effecten. Hierbij maakten wij in een codepen glitch effecten zonder HTML.
+
+![Movie Picker](./images/movie-picker.png)
+
 ### Dinsdag 4 Mar
 
 ### Vrijdag 7 Mar
