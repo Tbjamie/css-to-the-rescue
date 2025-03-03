@@ -33,7 +33,7 @@ Let op bij het gebruiken van oklch of een van de andere nieuwe kleuren dat je ee
 
 We begonnen met het presenteren van de testjes die we hadden gemaakt. Ik merkte meteen dat ik nieuwe kennis op gedaan had toen ik een vraag kreeg over hoe oklch eigenlijk werkt en ik dat meteen kon uitleggen. Na de presentaties kregen we uitleg over de eindopdracht van CSS To The Rescue. We hadden keuze uit 3 verschillende opdrachten en ik heb gekozen voor een film tijdlijn. De film die ik kies is: Inception. Ik heb deze film gekozen, omdat er veel diepte zit in de film en er veel verschillende lagen (Droomlagen) zijn. Dit geeft ruimte voor gecompliceerde functionaliteiten waarmee ik kan experimenteren. Ik heb de rest van de les besteed aan het bedenken van een concept en heb alvast deze schets gemaakt:
 
-[SCHETSFOTO]
+![Concept Schets Week 1](./images/concept-sketch.webp)
 
 ### Vrijdag 28 Feb
 
@@ -45,7 +45,7 @@ Tijdens deze eerste feedback ronde zaten we in een groepje met Sanne en deelde w
 
 Ik begon deze week met het uitbreiden van mijn concept. Ik heb als idee een movie picker erbij. Deze bestaat uit 3 films en van de geselecteerde film is er een timeline te zien. Ik heb vandaag de movie picker ook kunnen laten werken en ga morgen verder met het maken van de timelines. Ook heb ik een workshop gevolgd van Roel Nieskens over glitch effecten. Hierbij maakten wij in een codepen glitch effecten zonder HTML.
 
-![Movie Picker](./images/movie-picker.png)
+![Movie Picker](./images/movie-picker.webp)
 
 ### Dinsdag 4 Mar
 
