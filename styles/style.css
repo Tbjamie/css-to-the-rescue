@@ -4,20 +4,261 @@
   box-sizing: border-box;
 }
 
+:root {
+  --red: #c8322f;
+  --white: oklch(1 0 0);
+  --black: oklch(0 0 0);
+  --blue: oklch(0 1 270);
+  --green: oklch(0.45 0.12 180);
+
+  --fluid-heading: clamp(3rem, 7.249vw + 1.301rem, 10rem);
+}
+
 html {
   scroll-behavior: smooth;
+  background-color: var(--black);
 }
 
 body {
   overflow-x: hidden;
+  color: white;
+  background-color: var(--black);
 }
 
-section {
+main > section {
   width: 100vw;
-  height: 200vh;
-  background-color: rgb(17, 17, 17);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
+  transition: 3s;
+  background: linear-gradient(45deg, var(--black), var(--green));
 }
 
-section:nth-of-type(2n) {
-  background-color: rgb(111, 0, 255);
+main > section h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  position: relative;
+  width: 100vw;
+  margin-bottom: 2rem;
+
+  &::after {
+    content: "Choose your movie";
+    display: block;
+    position: absolute;
+    width: 100vw;
+    text-align: center;
+  }
+}
+
+main > section form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+}
+
+main > section form label {
+  transition: 1s;
+  cursor: pointer;
+
+  img {
+    width: 15vw;
+  }
+
+  input {
+    visibility: hidden;
+  }
+
+  &:has(input:checked) {
+    img {
+      animation: selected-movie-animation 2s forwards;
+    }
+  }
+}
+
+main > div {
+  display: none;
+}
+
+:has(input[type="radio"]:checked) {
+  main > section form label {
+    &:not(:has(input:checked)) {
+      img {
+        animation: non-selected-movie-animation 1s forwards;
+      }
+    }
+  }
+
+  main > section h1 {
+    animation: non-selected-movie-animation 2s forwards;
+  }
+}
+
+:has(label:hover) {
+  main > section form label {
+    &:not(:has(:hover)) {
+      filter: grayscale(10);
+    }
+  }
+}
+
+:has(input[value="inception"]:checked) main {
+  & > section {
+    background: url(../images/inception-poster.webp);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    overflow: auto;
+    overflow-x: hidden;
+
+    h1 {
+      &::after {
+        content: "Inception";
+      }
+    }
+  }
+
+  & > div:first-of-type {
+    display: block;
+
+    section {
+      height: 100vh;
+
+      &:nth-of-type(2n) {
+        background-color: greenyellow;
+      }
+    }
+  }
+}
+
+:has(input[value="tenet"]:checked) main {
+  & > section {
+    background: url(../images/tenet-poster-horizontal.webp);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    overflow: auto;
+    overflow-x: hidden;
+  }
+
+  h1 {
+    &::after {
+      content: "Tenet";
+    }
+  }
+
+  & > div:nth-of-type(2) {
+    display: block;
+
+    section {
+      height: 100vh;
+
+      &:nth-of-type(2n) {
+        background-color: greenyellow;
+      }
+    }
+  }
+}
+
+:has(input[value="interstellar"]:checked) main {
+  & > section {
+    background: url(../images/interstellar-poster.webp);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    overflow: auto;
+    overflow-x: hidden;
+  }
+
+  h1 {
+    &::after {
+      content: "Interstellar";
+    }
+  }
+
+  & > div:last-of-type {
+    display: block;
+
+    section {
+      height: 100vh;
+
+      &:nth-of-type(2n) {
+        background-color: greenyellow;
+      }
+    }
+  }
+}
+
+main > div > section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+main > div section h2 {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: var(--fluid-heading);
+}
+
+main > div:first-of-type section h2 {
+  color: var(--red);
+}
+
+main > div:nth-of-type(2) section:first-of-type {
+  background: linear-gradient(90deg, var(--blue), var(--black), var(--blue));
+}
+
+main > div:nth-of-type(2) section h2 {
+  color: var(--black);
+  letter-spacing: 3rem;
+  display: flex;
+  gap: 3rem;
+  text-align: center;
+
+  span {
+    transform: scale(1, -1);
+    display: inline-block;
+
+    &:first-of-type {
+      transform: none;
+      color: var(--white);
+    }
+
+    &:nth-of-type(2) {
+      transform: scale(-1, 1);
+      margin-left: -4rem;
+    }
+  }
+}
+
+main > div:last-of-type section h2 {
+  color: var(--red);
+}
+
+@keyframes selected-movie-animation {
+  0% {
+    width: 15vw;
+  }
+  100% {
+    width: 25vw;
+    display: none;
+    opacity: 0;
+  }
+}
+
+@keyframes non-selected-movie-animation {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    display: none;
+  }
 }
