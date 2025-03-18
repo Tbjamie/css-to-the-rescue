@@ -10,12 +10,14 @@
   --black: oklch(0 0 0);
   --blue: oklch(0 1 270);
   --green: oklch(0.45 0.12 180);
+  --grey: oklch(0.25 0 50);
 
   --fluid-heading: clamp(3rem, 7.249vw + 1.301rem, 10rem);
 }
 
 html {
   scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
   background-color: var(--black);
 }
 
@@ -23,7 +25,50 @@ body {
   overflow-x: hidden;
   color: white;
   background-color: var(--black);
+  font-family: "montserrat", sans-serif;
+  letter-spacing: 5px;
 }
+
+main {
+  max-width: 100vw;
+}
+
+/* Scroll watcher */
+
+main > span {
+  height: 10px;
+  z-index: 9999;
+  position: fixed;
+  background-color: var(--grey);
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: none;
+
+  /* Scroll watcher line */
+
+  &::after {
+    content: "";
+    background-color: var(--red);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    scale: 0 1;
+    transform-origin: left;
+    animation: scroll-watcher linear;
+    animation-timeline: scroll(y);
+  }
+}
+
+@keyframes scroll-watcher {
+  to {
+    scale: 1 1;
+  }
+}
+
+/* Movie picker */
 
 main > section {
   width: 100vw;
@@ -38,11 +83,13 @@ main > section {
 }
 
 main > section h1 {
-  font-size: 3rem;
+  font-size: clamp(1.5rem, 1.553vw + 1.136rem, 3rem);
   font-weight: 700;
   position: relative;
   width: 100vw;
   margin-bottom: 2rem;
+  mix-blend-mode: overlay;
+  letter-spacing: normal;
 
   &::after {
     content: "Choose your movie";
@@ -55,10 +102,12 @@ main > section h1 {
 
 main > section form {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
-  gap: 5rem;
+  width: 100%;
 }
+
+/* Movie picker cards */
 
 main > section form label {
   transition: 1s;
@@ -105,7 +154,83 @@ main > div {
   }
 }
 
+/* Basic styling for other movies before they got cancelled and heading styling for inception  */
+
+main {
+  & > div {
+    &:first-of-type {
+      & section {
+        & h2 {
+          color: var(--red);
+          z-index: 1;
+        }
+      }
+    }
+
+    &:nth-of-type(2) {
+      & section {
+        & h2 {
+          color: var(--black);
+          letter-spacing: 3rem;
+          display: flex;
+          gap: 3rem;
+          text-align: center;
+
+          & span {
+            transform: scale(1, -1);
+            display: inline-block;
+
+            &:first-of-type {
+              transform: none;
+              color: var(--white);
+            }
+
+            &:nth-of-type(2) {
+              transform: scale(-1, 1);
+              margin-left: -4rem;
+            }
+          }
+        }
+
+        &:first-of-type {
+          background: linear-gradient(
+            90deg,
+            var(--blue),
+            var(--black),
+            var(--blue)
+          );
+        }
+      }
+    }
+
+    &:last-of-type {
+      & section {
+        & h2 {
+          color: var(--black);
+        }
+
+        &:first-of-type {
+          background: linear-gradient(180deg, var(--white), var(--green));
+        }
+      }
+    }
+
+    & > section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      & h2 {
+        text-align: center;
+        text-transform: uppercase;
+        font-size: var(--fluid-heading);
+      }
+    }
+  }
+}
+
 :has(input[value="inception"]:checked) main {
+  /* Change background to inception poster when inception is chosen */
   & > section {
     background: url(../images/inception-poster.webp);
     background-attachment: fixed;
@@ -115,25 +240,719 @@ main > div {
     overflow: auto;
     overflow-x: hidden;
 
+    /* Change title to "inception" */
+
     h1 {
+      z-index: 1;
+
       &::after {
         content: "Inception";
       }
     }
   }
 
-  & > div:first-of-type {
+  /* Display scroll watcher */
+
+  & > span {
     display: block;
+  }
+
+  /* Inception movie */
+
+  & > div:first-of-type {
+    position: relative;
+
+    & > img {
+      position: absolute;
+      top: 0%;
+      left: 0%;
+      transform: translate(-100%, 0%);
+      width: 25%;
+      animation: spinning-top-moving-animation linear;
+      animation-timeline: view();
+      animation-fill-mode: forwards;
+    }
+
+    display: block;
+    background: linear-gradient(180deg, var(--black), #00033187);
+    /* TODO: Fix this gradient so that blue shows at the bottom  */
+
+    /* Default section styling */
 
     section {
       height: 100vh;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
 
-      &:nth-of-type(2n) {
-        background-color: greenyellow;
+      & + section {
+        height: 200vh;
+      }
+
+      /* Inception first section styling */
+
+      &:first-of-type {
+        background: linear-gradient(180deg, #1fd3f387, var(--black));
+
+        & h2 {
+          mix-blend-mode: color;
+        }
+      }
+
+      /* Inception second section styling */
+
+      &:nth-of-type(2) {
+        z-index: 1;
+        position: relative;
+        height: 200vh;
+        background: radial-gradient(circle, #f3a21f, var(--black) 80%);
+        animation: inset-animation linear;
+        animation-timeline: view();
+        padding-left: 10rem;
+
+        & h2 {
+          color: var(--white);
+          mix-blend-mode: overlay;
+        }
+
+        & img {
+          position: sticky;
+          top: 0;
+          right: 0;
+        }
+      }
+
+      /* Inception third section styling */
+
+      &:nth-of-type(3) {
+        background: linear-gradient(0deg, var(--black), #00033187);
+        position: relative;
+        height: 400vh;
+        scroll-margin-top: 10px;
+
+        & h2 {
+          mix-blend-mode: multiply;
+          position: absolute;
+          bottom: 75%;
+        }
+
+        /* Taxi driving in the rain */
+
+        & img:first-of-type {
+          position: absolute;
+          bottom: 75%;
+          left: 0%;
+          mix-blend-mode: hard-light;
+          animation: left-right-animation linear infinite 8s;
+        }
+
+        /* Rain styling */
+
+        & div {
+          display: flex;
+          gap: 1rem;
+          position: absolute;
+          top: 0;
+          left: 0;
+
+          & span {
+            width: 2px;
+            height: 20px;
+            opacity: 0.5;
+            display: block;
+            background-color: #9c9cff;
+            animation: rain-animation linear infinite 100ms;
+            animation-range-start: 100vh;
+
+            &:nth-of-type(2n) {
+              animation-delay: 0.025s;
+            }
+
+            &:nth-of-type(3n) {
+              animation-duration: 300ms;
+              animation-delay: 0.05s;
+            }
+
+            &:nth-of-type(4n) {
+              animation-duration: 200ms;
+            }
+          }
+        }
+
+        /* Shaking eyes */
+
+        & article {
+          &:first-of-type {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            margin-top: -75vh;
+            gap: 5rem;
+            animation: shaking-animation infinite 500ms forwards;
+
+            & h3 {
+              font-size: clamp(3rem, 7.249vw + 1.301rem, 10rem);
+              mix-blend-mode: difference;
+              color: var(--red);
+              text-transform: uppercase;
+              position: absolute;
+              z-index: 1;
+            }
+
+            & div {
+              border-radius: 100%;
+              width: 40%;
+              height: 30%;
+              position: relative;
+              background-image: url("../images/barn.webp");
+
+              &::after {
+                content: "";
+                opacity: 1;
+                position: absolute;
+                top: 0;
+                left: 0;
+                background-color: var(--black);
+                width: 100%;
+                height: 100%;
+                animation: glitch-animation 1000ms infinite;
+                /* Animation timing function van https://easingwizard.com/ */
+                animation-timing-function: linear(
+                  0,
+                  0.409 5.7%,
+                  0.68 10.7%,
+                  0.838 15.5%,
+                  0.877 17.9%,
+                  0.89 20.3%,
+                  0.883 22.1%,
+                  0.862 24%,
+                  0.775 28.1%,
+                  0.103 46.8%,
+                  -0.03 51.9%,
+                  -0.11 56.9%,
+                  -0.142 61.2%,
+                  -0.143 65.9%,
+                  -0.124 70.2%,
+                  -0.021 86%,
+                  -0.004 92.1%,
+                  0
+                );
+              }
+
+              &:first-of-type {
+                background-position: left;
+              }
+
+              &:last-of-type {
+                background-position: right;
+              }
+            }
+          }
+
+          &:nth-of-type(2) {
+            background: red;
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+          }
+        }
+      }
+
+      /* Dream level 3 section styling */
+
+      &:nth-of-type(5) {
+        background: linear-gradient(0deg, #e4e4e4, #888888);
+        display: block;
+        position: relative;
+        overflow: hidden;
+        height: 300vh;
+
+        /* Snow Particles */
+
+        & div {
+          display: flex;
+          gap: 1rem;
+          position: absolute;
+          top: 0;
+          left: -100%;
+
+          & span {
+            width: 10px;
+            height: 10px;
+            border-radius: 9999px;
+            position: relative;
+            opacity: 0.25;
+            display: block;
+            background-color: var(--white);
+            animation: rain-animation linear infinite 150ms;
+            /* Animation timing function van https://easingwizard.com/ */
+            animation-timing-function: cubic-bezier(0.66, 0, 0.34, 1);
+
+            &:nth-of-type(2n) {
+              animation-delay: 0.025s;
+            }
+
+            &:nth-of-type(3n) {
+              animation-duration: 600ms;
+              animation-delay: 0.05s;
+            }
+
+            &:nth-of-type(4n) {
+              animation-delay: 0.075s;
+              animation-duration: 500ms;
+            }
+
+            &:nth-of-type(5n) {
+              animation-delay: 0.1s;
+              animation-duration: 400ms;
+            }
+          }
+        }
+
+        & article {
+          &:first-of-type {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+
+            & h2 {
+              color: var(--white);
+              mix-blend-mode: soft-light;
+
+              & span {
+                display: block;
+              }
+            }
+
+            /* Mountain styling */
+
+            & img {
+              position: absolute;
+              width: 20%;
+              bottom: 0;
+
+              &:first-of-type {
+                left: 10%;
+                width: 60%;
+                z-index: 1;
+                mix-blend-mode: color-burn;
+              }
+
+              &:nth-of-type(2) {
+                z-index: 2;
+                right: 10%;
+                width: 40%;
+              }
+
+              &:nth-of-type(3) {
+                left: 0;
+                width: 40%;
+                z-index: 2;
+              }
+
+              &:nth-of-type(4) {
+                left: 35%;
+                width: 30%;
+                z-index: 2;
+              }
+
+              &:last-of-type {
+                right: -10%;
+                width: 40%;
+                transform: scaleX(-1);
+                z-index: 2;
+              }
+            }
+          }
+
+          /* Hospital styling */
+
+          &:last-of-type {
+            position: relative;
+            background: linear-gradient(180deg, var(--red), transparent);
+            animation: background-gradient-animation 2s infinite forwards;
+            background-size: 100% 200%;
+            background-position: center center;
+            width: 100vw;
+            height: 200vh;
+            overflow: hidden;
+
+            & img:first-of-type {
+              position: absolute;
+              top: 0;
+              left: 0;
+              z-index: 1;
+              width: 50%;
+              /* TODO: Fix this animation-timeline */
+              /* animation: fischer-hospital-animation linear;
+              animation-timeline: view(y); */
+            }
+
+            & img:last-of-type {
+              position: absolute;
+              border-radius: 9999px;
+              top: 25%;
+              right: 0;
+              z-index: 1;
+              width: 25%;
+              /* TODO: Fix this animation-timeline */
+              /* animation: fischer-hospital-animation linear;
+              animation-timeline: view(y); */
+            }
+
+            & h2 {
+              /* TODO: Fix position sticky */
+              position: sticky;
+              top: calc(50% - clamp(3rem, 7.249vw + 1.301rem, 10rem));
+              mix-blend-mode: color-dodge;
+            }
+          }
+        }
+      }
+
+      &:nth-of-type(6) {
+        background-color: var(--white);
+
+        & h2 {
+          padding-top: 50vh;
+          mix-blend-mode: hard-light;
+          animation: glitch-animation 500ms infinite;
+        }
+      }
+
+      /* Dream Crash van crashes styling + section inset animation  */
+
+      &:nth-last-of-type(3) {
+        display: block;
+        background-color: #2f314c;
+        position: relative;
+        height: 100vh;
+        overflow: hidden;
+
+        animation: inset-animation linear forwards;
+        animation-timeline: view(50vh);
+
+        /* Rain animation */
+
+        & > div {
+          display: flex;
+          gap: 1rem;
+          position: absolute;
+          top: 0;
+          left: 0;
+
+          & span {
+            width: 2px;
+            height: 20px;
+            opacity: 0.5;
+            display: block;
+            background-color: #9c9cff;
+            animation: rain-animation linear infinite 100ms;
+
+            &:nth-of-type(2n) {
+              animation-delay: 0.025s;
+            }
+
+            &:nth-of-type(3n) {
+              animation-duration: 300ms;
+              animation-delay: 0.05s;
+            }
+
+            &:nth-of-type(4n) {
+              animation-duration: 200ms;
+            }
+          }
+        }
+
+        /* Wake up text */
+
+        & h2 {
+          padding-top: 50vh;
+          mix-blend-mode: hard-light;
+          animation: glitch-animation 500ms infinite;
+          font-size: clamp(3.5rem, 8.249vw + 1.901rem, 15rem);
+        }
+
+        /* Van falling animation */
+
+        & article {
+          transform: translateX(-50%) rotateX(180deg) translateY(-200%);
+          animation: truck-falling-animation linear forwards 5s infinite;
+          width: fit-content;
+        }
+      }
+
+      /* Limbo section styling */
+
+      &:nth-last-of-type(2) {
+        background: linear-gradient(180deg, var(--black), #1fd3f387);
+        display: block;
+        position: relative;
+        padding-top: 25vh;
+
+        /* Limbo heading animation */
+
+        & h2 {
+          position: sticky;
+          z-index: 0;
+          mix-blend-mode: hard-light;
+          text-align: center;
+          width: 100vw;
+          top: 30%;
+          animation: letter-spacing-animation linear forwards;
+          animation-timeline: view(300px);
+        }
+
+        & div {
+          display: flex;
+          width: 100vw;
+          align-items: flex-end;
+
+          /* Building animation */
+
+          &:first-of-type {
+            & img {
+              z-index: 1;
+              width: 50%;
+              animation: building-animation linear forwards;
+              animation-timeline: view(400px);
+
+              &:last-of-type {
+                transform: scaleX(-1);
+              }
+            }
+          }
+
+          &:last-of-type {
+            display: flex;
+            position: absolute;
+            top: 0;
+            & img {
+              width: 50vw;
+
+              &:last-of-type {
+                transform: scaleX(-1);
+              }
+            }
+          }
+        }
+      }
+
+      /* Am I Awake || Dreaming section styling */
+
+      &:last-of-type {
+        height: 100vh;
+        position: relative;
+        background: linear-gradient(0deg, var(--black) 30%, #1fd3f387);
+        overflow: hidden;
+
+        & h2 {
+          mix-blend-mode: hard-light;
+        }
+
+        /* Text change animation */
+
+        & h2 span {
+          &::after {
+            display: block;
+            content: "Dreaming?";
+            animation: text-change-animation 2s infinite;
+          }
+
+          /* Glitch animation to text */
+
+          &::before {
+            width: 100%;
+            height: 50%;
+            position: absolute;
+            bottom: 0%;
+            left: 0;
+            content: "";
+            opacity: 0.5;
+            background-color: var(--black);
+            animation: glitch-animation 500ms infinite;
+            /* Animation timing function van https://easingwizard.com/ */
+            animation-timing-function: linear(
+              0,
+              0.409 5.7%,
+              0.68 10.7%,
+              0.838 15.5%,
+              0.877 17.9%,
+              0.89 20.3%,
+              0.883 22.1%,
+              0.862 24%,
+              0.775 28.1%,
+              0.103 46.8%,
+              -0.03 51.9%,
+              -0.11 56.9%,
+              -0.142 61.2%,
+              -0.143 65.9%,
+              -0.124 70.2%,
+              -0.021 86%,
+              -0.004 92.1%,
+              0
+            );
+          }
+        }
+
+        /* Spinning top animation and styling (Element links back to the movie picker screen) */
+
+        & a {
+          position: absolute;
+          bottom: 0;
+          animation: spinning-top-animation 1s infinite alternate;
+          z-index: 1;
+        }
       }
     }
   }
 }
+
+@keyframes letter-spacing-animation {
+  0% {
+    letter-spacing: 5px;
+    font-weight: 800;
+  }
+  100% {
+    letter-spacing: 100px;
+    font-weight: normal;
+  }
+}
+
+/* Animates the buildings in the limbo section using custom properties declared in the HTML */
+
+@keyframes building-animation {
+  0% {
+    transform: translateX(0) scaleX(var(--buildingScale));
+  }
+  100% {
+    transform: translateX(var(--buildingAnimation)) scaleX(var(--buildingScale));
+  }
+}
+
+@keyframes truck-falling-animation {
+  0% {
+    transform: translateX(-100%) rotate(0deg) translateY(-200%);
+  }
+
+  25% {
+    transform: translateX(0%) rotate(45deg) translateY(-50%);
+  }
+
+  50% {
+    transform: translateX(50%) rotate(90deg) translateY(-100%);
+  }
+
+  100% {
+    transform: translateX(150%) rotate(145deg) translateY(-500%);
+  }
+}
+
+@keyframes fischer-hospital-animation {
+  from {
+    transform: translateY(0%) rotate(0deg);
+  }
+  to {
+    transform: translateX(-100%) translateY(100%) rotate(-45deg);
+  }
+}
+
+@keyframes background-gradient-animation {
+  0% {
+    background-position: center center;
+  }
+
+  50% {
+    background-position: top center;
+  }
+}
+
+@keyframes shaking-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(5deg);
+  }
+  75% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes left-right-animation {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(300%);
+  }
+}
+
+@keyframes inset-animation {
+  0% {
+    clip-path: circle(75%);
+  }
+  100% {
+    clip-path: circle(25%);
+  }
+}
+
+@keyframes rain-animation {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+@keyframes glitch-animation {
+  to {
+    opacity: 0;
+  }
+}
+
+/* Changes text in the final section from "Dreaming" to "Awake" */
+
+@keyframes text-change-animation {
+  to {
+    content: "Awake?";
+  }
+}
+
+@keyframes spinning-top-moving-animation {
+  25% {
+    transform: translate(400%, 10%);
+  }
+
+  75% {
+    transform: translate(-100%, 100%);
+  }
+
+  100% {
+    transform: translate(-100%, 200%);
+  }
+}
+
+@keyframes spinning-top-animation {
+  0% {
+    transform: rotate(15deg);
+  }
+
+  100% {
+    transform: rotate(-15deg);
+  }
+}
+
+/* Styling for the tenet movie */
 
 :has(input[value="tenet"]:checked) main {
   & > section {
@@ -157,13 +976,11 @@ main > div {
 
     section {
       height: 100vh;
-
-      &:nth-of-type(2n) {
-        background-color: greenyellow;
-      }
     }
   }
 }
+
+/* Styling for the interstellar movie */
 
 :has(input[value="interstellar"]:checked) main {
   & > section {
@@ -195,57 +1012,6 @@ main > div {
   }
 }
 
-main > div > section {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-main > div section h2 {
-  text-align: center;
-  text-transform: uppercase;
-  font-size: var(--fluid-heading);
-}
-
-main > div:first-of-type section h2 {
-  color: var(--red);
-}
-
-main > div:nth-of-type(2) section:first-of-type {
-  background: linear-gradient(90deg, var(--blue), var(--black), var(--blue));
-}
-
-main > div:nth-of-type(2) section h2 {
-  color: var(--black);
-  letter-spacing: 3rem;
-  display: flex;
-  gap: 3rem;
-  text-align: center;
-
-  span {
-    transform: scale(1, -1);
-    display: inline-block;
-
-    &:first-of-type {
-      transform: none;
-      color: var(--white);
-    }
-
-    &:nth-of-type(2) {
-      transform: scale(-1, 1);
-      margin-left: -4rem;
-    }
-  }
-}
-
-main > div:last-of-type section h2 {
-  color: var(--black);
-}
-
-main > div:last-of-type section:first-of-type {
-  background: linear-gradient(180deg, var(--white), var(--green));
-}
-
 @keyframes selected-movie-animation {
   0% {
     width: 15vw;
@@ -266,3 +1032,5 @@ main > div:last-of-type section:first-of-type {
     display: none;
   }
 }
+
+/* TODO: VOEG NOG EEN NIEUWE TECHNIEK TOE ZOALS CONTAINER QUERIES */
