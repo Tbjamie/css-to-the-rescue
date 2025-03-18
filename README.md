@@ -2,6 +2,7 @@
 
 ## Inhoudsopgave
 
+- [Concept](#concept)
 - [Week 1](#week-1)
   - [Maandag 24 Feb](#maandag-24-feb)
   - [Dinsdag 25 Feb](#dinsdag-25-feb)
@@ -18,6 +19,10 @@
   - [Maandag 17 Mar](#maandag-17-mar)
   - [Dinsdag 18 Mar](#dinsdag-18-mar)
   - [Vrijdag 21 Mar](#vrijdag-21-mar)
+
+## Concept
+
+Mijn concept aan het begin van dit project was om een movie picker te maken waarbij meerdere films gekozen konden worden die dan gecombineerd werden tot een unieke storyline. Helaas werd ik toen ziek en kon ik niet werken aan het project dus besloot ik om de opdracht nog wel een movie picker te maken, maar dan met de originele storylines. Helaas was ik voor een langere tijd ziek dus heb ik uiteindelijk besloten om nog steeds de movie picker te maken, maar alleen 1 film uit te werken. Mijn concept uiteindelijk is dus een movie picker met inception als uitgewerkte storyline.
 
 ## Week 1
 
@@ -49,20 +54,40 @@ Ik begon deze week met het uitbreiden van mijn concept. Ik heb als idee een movi
 
 ### Dinsdag 4 Mar
 
+Ik was helaas sinds dinsdag 4 Maart ziek geworden en heb geen werk kunnen doen.
+
 ### Vrijdag 7 Mar
+
+Ik was helaas sinds dinsdag 4 Maart ziek geworden en heb geen werk kunnen doen.
 
 ## Week 3
 
 ### Maandag 10 Mar
 
+Ik was helaas sinds dinsdag 4 Maart ziek geworden en heb geen werk kunnen doen.
+
 ### Dinsdag 11 Mar
 
+Ik was helaas sinds dinsdag 4 Maart ziek geworden en heb geen werk kunnen doen.
+
 ### Vrijdag 14 Mar
+
+Verder gewerkt aan website scroll snap ingeschakeld
 
 ## Week 4
 
 ### Maandag 17 Mar
 
+Verder gewerkt aan website
+
+![Snow Particles](./images/snow-progress.webp)
+
 ### Dinsdag 18 Mar
 
+Ik heb vandaag aan de responsiveness gewerkt van de website
+
 ### Vrijdag 21 Mar
+
+<!-- FIXME: DOCUMENTATIE FIXEN!! -->
+
+<!-- IDEA: CHECKBOXES TO SELECT A MOVIE (2 or 3 choices) AND CREATE A UNIQUE STORYLINE FOR EACH OF THEM -->
