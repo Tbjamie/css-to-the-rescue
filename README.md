@@ -86,8 +86,6 @@ Verder gewerkt aan website
 
 Ik heb vandaag aan de responsiveness gewerkt van de website
 
-### Vrijdag 21 Mar
-
 <!-- FIXME: DOCUMENTATIE FIXEN!! -->
 
 <!-- IDEA: CHECKBOXES TO SELECT A MOVIE (2 or 3 choices) AND CREATE A UNIQUE STORYLINE FOR EACH OF THEM -->
