@@ -72,20 +72,36 @@ Ik was helaas sinds dinsdag 4 Maart ziek geworden en heb geen werk kunnen doen.
 
 ### Vrijdag 14 Mar
 
-Verder gewerkt aan website scroll snap ingeschakeld
+Ik heb scroll snap toegevoegd aan de website en ik heb alvast een aantal sections responsive gemaakt.
+
+Ook heb ik deze section gemaakt en responsive gemaakt. Hierin heb ik met een css animatie de inhoud van de tekst veranderd. Iets wat ik niet wist dat kon dus dit was een erg interessante bevinding in het proces.
+![Am I dreaming section](./images/am-i-dreaming.webp)
+
+In de final section was bijvoorbeeld de tol veels te groot.
+![Final section responsive](./images/responsive-spinning-toll.webp)
+![Final section responsive](./images/responsive-spinning-toll-good.png)
 
 ## Week 4
 
 ### Maandag 17 Mar
 
-Verder gewerkt aan website
+Ik heb een aantal effecten gemaakt zoals de snow particles en heb ik level 3 van de droom gemaakt. Hierbij heb ik meet heel veel spans een particle effect nagemaakt en door te spelen met de animation-duration heb ik gezorgd dat het niet te zien is wanneer de animatie stopt.
 
 ![Snow Particles](./images/snow-progress.webp)
+![Artctic fortress](./images/arctic-fortress.webp)
+
+Ook heb ik dit effect gemaakt dat lijkt op knipperende ogen en het gevoel van paniek geeft. Hiervoor heb ik een background-image gebruikt. Dit gebruikte ik hiervoor eigenlijk bijna nooit en ik heb ook geleerd dat je door de background-position aan te passen je het kan laten lijken alsof hetzelfde plaatje op 2 verschillende plaatsen één doorlopend plaatje is.
+
+![Artctic fortress](./images/kidnapped-eyes.webp)
 
 ### Dinsdag 18 Mar
 
-Ik heb vandaag aan de responsiveness gewerkt van de website
+Ik ben vooral bezig geweest met het responsive maken vab de website en daarnaast heb ik ook een nieuwe animatie gemaakt voor het woord "Limbo". Hierbij maak ik de letter-spacing groter en maak ik de font-weight minder, waardoor er een cool effect ontstaat. Daarnaast maakt position sticky het effect af en ben ik erg tevreden met hoe deze section eruit is komen te zien.
 
-<!-- FIXME: DOCUMENTATIE FIXEN!! -->
+![Artctic fortress](./images/limbo-full-screen.webp)
 
-<!-- IDEA: CHECKBOXES TO SELECT A MOVIE (2 or 3 choices) AND CREATE A UNIQUE STORYLINE FOR EACH OF THEM -->
+### Takeaways
+
+Al met al heb ik veel nieuwe technieken geleerd en gebruikt. Degene die ik het fijnst vond was CSS-nesting. Ik vond het super handing en overzichtelijk om dit te gebruiken en ik zal dit ook zeker blijven gebruiken. Ook heb ik meteen geleerd dat je wel moet opletten met het gebruiken van zulke technieken (nieuwe CSS features), omdat deze nog niet in elke browser beschikbaar zijn. Gelukkig heb ik https://caniuse.com/ gekregen van de docenten om te kijken of bepaalde features wel beschikbaar zijn. Ook heb ik @container gebruikt, maar mijn voorkeur voor nu gaat toch nog uit naar de @media screen and query om zo de website responsive te maken. Dit had denk ik ook te maken met wat ik aan het maken was, want ik kan mij wel situaties voorstellen waar @container heel handing zou zijn. Bijvoorbeeld bij een card.
+
+Helaas was ik voor een groot gedeelte van dit project ziek, want ik had graag nog veel meer geëxperimenteerd met nieuwe CSS, maar toch ben ik tevreden met wat ik heb geleerd en met het eindresultaat!
