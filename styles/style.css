@@ -117,8 +117,39 @@ main > section form label {
     width: 15vw;
   }
 
+  &:has(input:disabled) {
+    cursor: not-allowed;
+    filter: grayscale(1);
+
+    &::after {
+      content: "This movie is not available";
+      position: absolute;
+      top: 25%;
+      left: -1rem;
+      width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: clamp(0.875rem, 0.129vw + 0.845rem, 1rem);
+      text-align: center;
+      background-color: var(--black);
+      color: var(--white);
+      padding: 2rem 1rem;
+      opacity: 0;
+      transition: 500ms;
+      z-index: 10;
+      container-type: inline-size;
+    }
+
+    &:hover {
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+
   input {
     visibility: hidden;
+    position: absolute;
   }
 
   &:has(input:checked) {
@@ -274,8 +305,6 @@ main {
     }
 
     display: block;
-    background: linear-gradient(180deg, var(--black), #00033187);
-    /* TODO: Fix this gradient so that blue shows at the bottom  */
 
     /* Default section styling */
 
@@ -326,13 +355,12 @@ main {
           top: 0;
           right: 0;
           width: 75%;
+          object-fit: contain;
         }
 
         @container (min-width: 768px) {
           img {
-            position: sticky;
-            width: 90%;
-            object-fit: contain;
+            width: 70%;
           }
         }
       }
@@ -421,52 +449,21 @@ main {
             }
 
             & div {
-              border-radius: 100%;
-              width: 40%;
-              height: 15%;
-              position: relative;
+              width: 100vw;
+              height: 30em;
               background-image: url("../images/barn.webp");
+              background-size: cover;
 
-              &::after {
-                content: "";
-                opacity: 1;
-                position: absolute;
-                top: 0;
-                left: 0;
-                background-color: var(--black);
-                width: 100%;
-                height: 100%;
-                animation: glitch-animation 1000ms infinite;
-                /* Animation timing function van https://easingwizard.com/ */
-                animation-timing-function: linear(
-                  0,
-                  0.409 5.7%,
-                  0.68 10.7%,
-                  0.838 15.5%,
-                  0.877 17.9%,
-                  0.89 20.3%,
-                  0.883 22.1%,
-                  0.862 24%,
-                  0.775 28.1%,
-                  0.103 46.8%,
-                  -0.03 51.9%,
-                  -0.11 56.9%,
-                  -0.142 61.2%,
-                  -0.143 65.9%,
-                  -0.124 70.2%,
-                  -0.021 86%,
-                  -0.004 92.1%,
-                  0
-                );
-              }
+              animation: glitch-animation 350ms infinite alternate linear;
 
-              &:first-of-type {
-                background-position: left;
-              }
+              mask: radial-gradient(at 25% 50%, red 20%, transparent 0),
+                radial-gradient(at 75% 50%, red 20%, transparent 0);
 
-              &:last-of-type {
-                background-position: right;
-              }
+              mask-size: 100% 65vw;
+              mask-repeat: no-repeat;
+              mask-position: center center;
+
+              position: relative;
             }
           }
 
@@ -725,6 +722,31 @@ main {
           transform: translateX(-50%) rotateX(180deg) translateY(-200%);
           animation: truck-falling-animation linear forwards 5s infinite;
           width: fit-content;
+          position: relative;
+          cursor: pointer;
+
+          & input {
+            visibility: hidden;
+          }
+
+          &:has(input:checked) {
+            & > img {
+              display: block;
+            }
+          }
+
+          &:not(:has(input:checked)) {
+            & > img {
+              display: none;
+            }
+          }
+
+          & > img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
+          }
         }
       }
 
@@ -848,7 +870,52 @@ main {
           display: flex;
           justify-content: center;
           bottom: 0;
-          animation: spinning-top-animation 1s infinite alternate;
+          animation: spinning-top-animation 2s infinite alternate;
+          animation-timing-function: linear(
+            0,
+            0.006 5.5%,
+            0.028 8.9%,
+            0.079 11.8%,
+            0.16 14.3%,
+            0.464 19.2%,
+            0.993 24.2%,
+            0.293 30.3%,
+            0.152 32.3%,
+            0.108 34.1%,
+            0.16 35.9%,
+            0.313 37.7%,
+            0.998 42%,
+            0.408 45.6%,
+            0.276 47%,
+            0.234 48.3%,
+            0.278 49.6%,
+            0.406 50.9%,
+            0.993 54.2%,
+            0.502 57.1%,
+            0.399 58.2%,
+            0.368 59.2%,
+            0.4 60.2%,
+            0.505 61.3%,
+            0.994 64.2%,
+            0.618 66.5%,
+            0.506 68.4%,
+            0.613 70.2%,
+            0.994 72.8%,
+            0.72 74.8%,
+            0.642 76.4%,
+            0.715 78%,
+            0.995 80.4%,
+            0.822 82.2%,
+            0.771 83.6%,
+            0.818 85.1%,
+            0.996 87.4%,
+            0.911 88.9%,
+            0.885 90.2%,
+            0.906 91.4%,
+            0.999 93.9%,
+            0.971 95.9%,
+            1
+          );
           z-index: 1;
         }
 
@@ -1115,7 +1182,7 @@ main {
           & article {
             &:first-of-type {
               & div {
-                height: 30%;
+                height: 100%;
               }
             }
           }
