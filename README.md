@@ -100,6 +100,10 @@ Ik ben vooral bezig geweest met het responsive maken vab de website en daarnaast
 
 ![Artctic fortress](./images/limbo-full-screen.webp)
 
+### Herkansing
+
+Ik heb voor de herkansing nog een aantal dingen veranderd. Ik heb bijvoorbeeld voor het oogeffect een mask gebruikt in plaats van 2 divs. Daarnaast heb ik een extra click animatie toegevoegd doornmiddel van een checkbox. Ook heb ik geprobeerd om de "Level 1: The City" tekst te wrappen om zo de blend mode wel goed te laten werken, maar dit was helaas niet gelukt.
+
 ### Takeaways
 
 Al met al heb ik veel nieuwe technieken geleerd en gebruikt. Degene die ik het fijnst vond was CSS-nesting. Ik vond het super handing en overzichtelijk om dit te gebruiken en ik zal dit ook zeker blijven gebruiken. Ook heb ik meteen geleerd dat je wel moet opletten met het gebruiken van zulke technieken (nieuwe CSS features), omdat deze nog niet in elke browser beschikbaar zijn. Gelukkig heb ik https://caniuse.com/ gekregen van de docenten om te kijken of bepaalde features wel beschikbaar zijn. Ook heb ik @container gebruikt, maar mijn voorkeur voor nu gaat toch nog uit naar de @media screen and query om zo de website responsive te maken. Dit had denk ik ook te maken met wat ik aan het maken was, want ik kan mij wel situaties voorstellen waar @container heel handing zou zijn. Bijvoorbeeld bij een card.
